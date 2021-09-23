@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Meal from '../meal/Meal';
+import Order from '../order/Order';
 import './Home.css';
 const Home = () => {
     let foodName = '';
@@ -28,20 +29,25 @@ const Home = () => {
     }
     return (
         <div>
-            <h1>{'Simple Meal House'.toUpperCase()}</h1>
+            <header>
+                <h1>{'Simple Meal House'.toUpperCase()}</h1>
 
-            <div className="search-field">
-                <input type="text" placeholder="search by food name" onChange={changeHandler}/>
-                <button onClick={submitHandler}>search</button>
-            </div>
+                <div className="search-field">
+                    <input type="text" placeholder="search by food name" onChange={changeHandler}/>
+                    <button onClick={submitHandler}>search</button>
+                </div>
+            </header>
 
-            <div>
+            <main>
                 <div className="meals">
                     {
                         meals.map(meal => <Meal key={meal.idMeal} meal={meal}></Meal>)
                     }
                 </div>
-            </div>
+                <div className="orders">
+                    <Order></Order>
+                </div>
+            </main>
         </div>
     );
 };

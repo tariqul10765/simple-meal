@@ -1,6 +1,13 @@
 .search-field{
     margin: 20px 0;
 }
+
+
+/* main section */
+main{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
 .meals{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
