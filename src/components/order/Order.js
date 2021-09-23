@@ -5,11 +5,9 @@ import './Order.css';
 const Order = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        console.log('This is from order initial load');
         const getData = JSON.parse(getDataToLocalStorage('orders'));
         if(getData){
             const result = Object.keys(getData).map((key) => [String(key), getData[key]]);
-            console.log(result);
             setData(result);
         }
     }, []);
