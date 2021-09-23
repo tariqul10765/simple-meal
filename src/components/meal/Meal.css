@@ -1,6 +1,8 @@
 .meal{
     width: 100%;
+    padding: 15px 0;
+    box-shadow: 0 0 3px;
 }
 .meal img{
-    width: 100%;
+    width: 80%;
 }

@@ -3,9 +3,12 @@ import { addDataToLocalStorage } from '../../utilities/localStorage';
 import './Meal.css';
 const Meal = (props) => {
     // console.log('from meal', props.meal);
+    const {handleOrder} = props;
+    // console.log(props);
     const {strMeal, strMealThumb} = props.meal;
 
     const orderMeal = () => {
+        handleOrder(strMeal);
         addDataToLocalStorage(strMeal);
     }
     return (

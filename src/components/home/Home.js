@@ -27,6 +27,10 @@ const Home = () => {
     const submitHandler = () => {
         setName(foodName);
     }
+
+    const handleOrder = (meal, quantity) => {
+        console.log(meal, quantity);
+    }
     return (
         <div>
             <header>
@@ -41,7 +45,11 @@ const Home = () => {
             <main>
                 <div className="meals">
                     {
-                        meals.map(meal => <Meal key={meal.idMeal} meal={meal}></Meal>)
+                        meals.map(meal => <Meal 
+                            handleOrder={handleOrder} 
+                            key={meal.idMeal} 
+                            meal={meal}
+                            ></Meal>)
                     }
                 </div>
                 <div className="orders">
