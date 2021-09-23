@@ -1,0 +1,8 @@
+.search-field{
+    margin: 20px 0;
+}
+.meals{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
