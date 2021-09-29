@@ -6,3 +6,8 @@
 .meal img{
     width: 80%;
 }
+.meal__card__btn{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}

@@ -5,9 +5,14 @@ import Meal from '../meal/Meal';
 import './Home.css';
 import { IconButton, styled, Badge  } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { getDataToLocalStorage } from '../../utilities/localStorage';
+import { useHistory } from 'react-router';
 const Home = () => {
     const [meals, setMeals] = useState([]);
     const [name, setName] = useState('');
+    const [localStorageData, setLocalStorageData] = useState([]);
+
+    let history = useHistory();
 
     useEffect(() => {
         fetch('fakeData.JSON')
@@ -21,6 +26,13 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setMeals(data.meals))
         }
+
+        // get data from local storage
+        const getData = JSON.parse(getDataToLocalStorage('orders'));
+        if(getData){
+            const result = Object.keys(getData).map((key) => [String(key), getData[key]]);
+            setLocalStorageData(result);
+        }
     }, [name]);
 
     // const changeHandler = (e) => {
@@ -29,6 +41,9 @@ const Home = () => {
     // const submitHandler = () => {
     //     setName(foodName);
     // }
+    const handleCartBtn = () => {
+        history.push('/orders');
+    }
 
     const StyledBadge = styled(Badge)(({ theme }) => ({
         '& .MuiBadge-badge': {
@@ -59,8 +74,8 @@ const Home = () => {
 
 
                     <div>
-                        <IconButton aria-label="cart">
-                            <StyledBadge badgeContent={5} color="secondary">
+                        <IconButton aria-label="cart" onClick={handleCartBtn}>
+                            <StyledBadge badgeContent={localStorageData.length} color="secondary">
                                 <ShoppingCartIcon />
                             </StyledBadge>
                         </IconButton>
