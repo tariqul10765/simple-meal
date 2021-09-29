@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Meal from '../meal/Meal';
-import Order from '../order/Order';
 import './Home.css';
+import { IconButton, styled, Badge  } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Home = () => {
-    let foodName = '';
     const [meals, setMeals] = useState([]);
     const [name, setName] = useState('');
 
@@ -23,16 +23,27 @@ const Home = () => {
         }
     }, [name]);
 
-    const changeHandler = (e) => {
-        foodName = e.target.value;
-    }
-    const submitHandler = () => {
-        setName(foodName);
-    }
+    // const changeHandler = (e) => {
+    //     foodName = e.target.value;
+    // }
+    // const submitHandler = () => {
+    //     setName(foodName);
+    // }
+
+    const StyledBadge = styled(Badge)(({ theme }) => ({
+        '& .MuiBadge-badge': {
+          right: -3,
+          top: 13,
+          border: `2px solid ${theme.palette.background.paper}`,
+          padding: '0 4px',
+        },
+      }));
     return (
         <div>
             <header>
-                <h1>{'Simple Meal House'.toUpperCase()}</h1>
+                <div className="navigation">
+                    <h1>{'Simple Meal House'.toUpperCase()}</h1>
+                </div>
 
                 <div className="search-field">
                     <Autocomplete
@@ -45,6 +56,15 @@ const Home = () => {
                         sx={{ width: 500 }}
                         renderInput={(params) => <TextField {...params} label="Search by meal name..." />}
                     />
+
+
+                    <div>
+                        <IconButton aria-label="cart">
+                            <StyledBadge badgeContent={5} color="secondary">
+                                <ShoppingCartIcon />
+                            </StyledBadge>
+                        </IconButton>
+                    </div>
                 </div>
             </header>
 
@@ -57,9 +77,9 @@ const Home = () => {
                             ></Meal>)
                     }
                 </div>
-                <div className="orders">
+                {/* <div className="orders">
                     <Order></Order>
-                </div>
+                </div> */}
             </main>
         </div>
     );

@@ -1,16 +1,17 @@
+
 .search-field{
+    display: inline-flex;
+    gap: 50px;
     text-align: -webkit-center;
     margin: 20px 0;
-}
-#combo-box-demo{
 }
 
 
 /* main section */
-main{
+/* main{
     display: grid;
     grid-template-columns: 3fr 1fr;
-}
+} */
 .meals{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
